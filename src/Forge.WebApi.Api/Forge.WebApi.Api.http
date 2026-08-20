@@ -1,0 +1,6 @@
+@Forge.WebApi.Api_HostAddress = http://localhost:5298
+
+GET {{Forge.WebApi.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

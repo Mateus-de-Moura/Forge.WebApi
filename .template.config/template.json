@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Mateus Moura",
+  "classifications": [ "Web", "API", "Clean Architecture" ],
+  "identity": "forge-api",
+  "name": "Forge Web API Clean Architecture",
+  "shortName": "forge-api",
+  "sourceName": "Forge.WebApi",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "exclude": [
+        ".git/**",
+        ".github/**",
+        ".cr/**",
+        ".vs/**",
+        ".tmp-template-*/**",
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        "**/*.user",
+        "Forge.WebApi.TemplatePack.csproj",
+        "README.md"
+      ]
+    }
+  ]
+}

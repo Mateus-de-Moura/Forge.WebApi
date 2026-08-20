@@ -1,0 +1,48 @@
+name: Publicar template .NET
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Gerar pacote
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart("v")
+          dotnet pack Forge.WebApi.TemplatePack.csproj --configuration Release --output artifacts -p:PackageVersion=$version
+
+      - name: Autenticar no NuGet.org com OIDC
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: MateusMoura12
+
+      - name: Publicar no NuGet.org
+        run: >-
+          dotnet nuget push "artifacts/*.nupkg"
+          --source "https://api.nuget.org/v3/index.json"
+          --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
+          --skip-duplicate
+
+      - name: Guardar pacote da versão
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-webapi-template-${{ github.ref_name }}
+          path: artifacts/*.nupkg
