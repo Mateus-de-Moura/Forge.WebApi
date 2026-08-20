@@ -4,12 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <PackageType>Template</PackageType>
     <PackageId>MateusDeMoura.Forge.WebApi.Templates</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>Forge Web API Templates</Title>
     <Authors>Mateus Moura</Authors>
     <Description>Template .NET para criação de APIs com Clean Architecture.</Description>
     <PackageTags>dotnet-new;templates;webapi;clean-architecture</PackageTags>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Mateus-de-Moura/Forge.WebApi</RepositoryUrl>
     <IncludeContentInPack>true</IncludeContentInPack>
@@ -22,10 +22,10 @@
 
   <ItemGroup>
     <Content Include="**/*"
-             Exclude=".git/**/*;.github/**/*;.cr/**/*;.vs/**/*;**/bin/**/*;**/obj/**/*;**/*.user;.tmp-template-*/**/*;Forge.WebApi.TemplatePack.csproj"
+             Exclude=".git/**/*;.github/**/*;.cr/**/*;.vs/**/*;**/bin/**/*;**/obj/**/*;**/*.user;.tmp-template-*/**/*;Forge.WebApi.TemplatePack.csproj;NUGET_README.md"
              Pack="true"
              PackagePath="content" />
-    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="NUGET_README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
 </Project>
