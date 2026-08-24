@@ -2,10 +2,8 @@
 using AutoMapper;
 using Forge.WebApi.Application.Dto.Auth;
 using Forge.WebApi.Application.Operations.Auth.Commands;
-using Forge.WebApi.Application.Operations.Auth.Validators;
 using Forge.WebApi.Application.Services;
 using Forge.WebApi.Domain.Interfaces.User;
-using Forge.WebApi.Shared.ExceptionBase;
 using MediatR;
 
 namespace Forge.WebApi.Application.Operations.Auth.Handlers
@@ -20,14 +18,6 @@ namespace Forge.WebApi.Application.Operations.Auth.Handlers
 
         public async Task<Result<UserAuthResponseDto>> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
-            var validate = new AuthUserValidator().Validate(request);
-
-            if (!validate.IsValid)
-            {
-                var errorMessage = validate.Errors.Select(e => e.ErrorMessage);
-                throw new ErrorOnValidationException([.. errorMessage]);
-            }
-
             var result = await _userRepository.GetUserByEmail(request.Email);
 
             var user = result.IsSuccess ? result.Value : null;

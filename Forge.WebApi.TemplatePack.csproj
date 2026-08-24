@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <PackageType>Template</PackageType>
     <PackageId>MateusDeMoura.Forge.WebApi.Templates</PackageId>
-    <PackageVersion>1.0.2</PackageVersion>
+    <PackageVersion>1.0.3</PackageVersion>
     <Title>Forge Web API Templates</Title>
     <Authors>Mateus Moura</Authors>
     <Description>Template .NET para criação de APIs com Clean Architecture.</Description>
